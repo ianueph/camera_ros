@@ -41,6 +41,18 @@ def generate_launch_description() -> LaunchDescription:
         default_value=format_param_default,
         description="pixel format"
     )
+    
+    camera_info_url_param_name = "camera_info_url"
+    camera_info_url_param_default = str()
+    camera_info_url_param = LaunchConfiguration(
+        camera_info_url_param_name,
+        default=camera_info_url_param_default,
+    )
+    camera_info_url_param_launch_arg = DeclareLaunchArgument(
+        camera_info_url_param_name,
+        default_value=camera_info_url_param_default,
+        description="camera info url (e.g. package://camera_ros/calibrations/imx708.yaml)"
+    )
 
     # camera node
     composable_nodes = [
@@ -49,9 +61,10 @@ def generate_launch_description() -> LaunchDescription:
             plugin='camera::CameraNode',
             parameters=[{
                 "camera": camera_param,
-                "width": 640,
-                "height": 480,
+                "width": 1920,
+                "height": 1080,
                 "format": format_param,
+                "camera_info_url": camera_info_url_param
             }],
             extra_arguments=[{'use_intra_process_comms': True}],
         ),
@@ -82,4 +95,5 @@ def generate_launch_description() -> LaunchDescription:
         container,
         camera_launch_arg,
         format_launch_arg,
+        camera_info_url_param_launch_arg,
     ])
