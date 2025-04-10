@@ -589,7 +589,7 @@ CameraNode::process(libcamera::Request *const request)
       // send image data
       std_msgs::msg::Header hdr;
       hdr.stamp = rclcpp::Time(time_offset + int64_t(metadata.timestamp));
-      hdr.frame_id = "base_link";
+      hdr.frame_id = "gripper_base";
       const libcamera::StreamConfiguration &cfg = stream->configuration();
 
       auto msg_img = std::make_unique<sensor_msgs::msg::Image>();
