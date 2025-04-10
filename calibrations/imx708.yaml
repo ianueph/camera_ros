@@ -1,6 +1,6 @@
 image_width: 1920
 image_height: 1080
-camera_name: imx708__base_axi_pcie_120000_rp1_i2c_88000_imx708_1a_1920x1080
+camera_name: object_detection_camera
 camera_matrix:
   rows: 3
   cols: 3
