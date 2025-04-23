@@ -86,6 +86,7 @@ private:
   std::unordered_map<const libcamera::Request *, std::mutex> request_mutexes;
   std::unordered_map<const libcamera::Request *, std::condition_variable> request_condvars;
   std::atomic<bool> running;
+  std::string camera_link;
 
   struct buffer_info_t
   {
@@ -243,6 +244,13 @@ CameraNode::CameraNode(const rclcpp::NodeOptions &options)
   param_descr_role.read_only = true;
   const libcamera::StreamRole role =
     get_role(declare_parameter<std::string>("role", "viewfinder", param_descr_role));
+
+  // camera link to be published to header
+  rcl_interfaces::msg::ParameterDescriptor param_descr_camera_link;
+  param_descr_camera_link.description = "the camera_link to be published to header";
+  param_descr_camera_link.additional_constraints = "string e.g. 'gripper_base', 'depth_camera', 'mirror_camera' ";
+  param_descr_camera_link.read_only = true;
+  camera_link = declare_parameter<std::string>("camera_link", {}, param_descr_camera_link);
 
   // image dimensions
   rcl_interfaces::msg::ParameterDescriptor param_descr_ro;
@@ -589,7 +597,7 @@ CameraNode::process(libcamera::Request *const request)
       // send image data
       std_msgs::msg::Header hdr;
       hdr.stamp = rclcpp::Time(time_offset + int64_t(metadata.timestamp));
-      hdr.frame_id = "gripper_base";
+      hdr.frame_id = camera_link;
       const libcamera::StreamConfiguration &cfg = stream->configuration();
 
       auto msg_img = std::make_unique<sensor_msgs::msg::Image>();
