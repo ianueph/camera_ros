@@ -80,6 +80,7 @@ install(TARGETS camera_component
 install(DIRECTORY
   launch
   calibrations
+  config
   DESTINATION share/${PROJECT_NAME}/
 )
 
