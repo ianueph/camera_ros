@@ -24,3 +24,9 @@ projection_matrix:
   data: [ 928.08759,    0.     , 1195.81551,    0.     ,
             0.     ,  966.93522,  597.77777,    0.     ,
             0.     ,    0.     ,    1.     ,    0.     ]
+roi:
+  x_offset: 0
+  y_offset: 0
+  height: 1296
+  width: 2304
+  do_rectify: true

@@ -1,0 +1,28 @@
+image_width: 640
+image_height: 360
+camera_name: mirror_camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [470.39468799999997, 0, 324.53490399999998, 0, 474.44730399999997, 168.620383, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.080185999999999993, -0.043561000000000002, -0.011903, 0.0041700000000000001, 0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [488.382858, 0, 327.04994399999998, 0, 0, 490.52129100000002, 164.20076499999999, 0, 0, 0, 1, 0]
+binning_x: 0
+binning_y: 0
+roi:
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: false

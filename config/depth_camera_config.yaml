@@ -1,6 +1,9 @@
 depth_camera:
   ros__parameters:
-    height: 1080
-    width: 1920
-    camera_info_url: "package://camera_ros/calibrations/imx708_1920x1080_depth.yaml"
-    camera_link: "depth_camera"
+    height: 360
+    width: 640
+    camera_info_url: package://camera_ros/calibrations/640x360_imx708_wide.yaml
+    camera: /base/axi/pcie@1000120000/rp1/i2c@88000/imx708@1a
+    format: XRGB8888
+    sensor_mode: 4608:2592
+    camera_link: depth_camera

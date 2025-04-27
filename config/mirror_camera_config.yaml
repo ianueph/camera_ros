@@ -1,0 +1,9 @@
+mirror_camera:
+  ros__parameters:
+    height: 360
+    width: 640
+    camera_info_url: package://camera_ros/calibrations/640x360_imx708.yaml
+    camera: /base/axi/pcie@1000120000/rp1/i2c@80000/imx708@1a
+    format: XRGB8888
+    sensor_mode: 4608:2592
+    camera_link: mirror_camera
